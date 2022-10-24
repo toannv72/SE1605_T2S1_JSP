@@ -36,8 +36,10 @@
             <input type="submit" name="action" value="View"/>
         </form>
         <%
-            String message = (String)request.getAttribute("MESSAGE");
-            if(message == null) message="";
+            String message = (String) request.getAttribute("MESSAGE");
+            if (message == null) {
+                message = "";
+            }
         %>
         <%=message%>
     </body>

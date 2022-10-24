@@ -12,6 +12,6 @@
         <title>Error Page</title>
     </head>
     <body>
-       Error: <h1><%= request.getAttribute("ERROR")  %></h1>
+        Error: <h1><%= request.getAttribute("ERROR")  %></h1>
     </body>
 </html>

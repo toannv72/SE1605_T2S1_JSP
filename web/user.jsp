@@ -14,24 +14,24 @@
     </head>
     <body>
         <h1>Hello user</h1>
-          <%
-            UserDTO user= (UserDTO)session.getAttribute("LOGIN_USER");
-            if(user==null || !"US".equals(user.getRoleID())){
-                response.sendRedirect("login.html");
-                return;
-            }
-            if(user==null){
-                user= new UserDTO();
-            }
+        <%
+          UserDTO user= (UserDTO)session.getAttribute("LOGIN_USER");
+          if(user==null || !"US".equals(user.getRoleID())){
+              response.sendRedirect("login.html");
+              return;
+          }
+          if(user==null){
+              user= new UserDTO();
+          }
         %>
         User ID: <%= user.getUserID() %></br>
         Full Name: <%= user.getFullName() %></br>
         Role ID: <%= user.getRoleID() %></br>
         Password: <%= user.getPassword() %>
-        
+
         <form action="MainController">
             <input type="submit" name="action" value="Logout">
-           
+
         </form>
     </body>
 </html>

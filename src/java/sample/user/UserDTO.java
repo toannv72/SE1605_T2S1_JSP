@@ -10,6 +10,7 @@ package sample.user;
  * @author ADMIN
  */
 public class UserDTO {
+
     private String userID;
     private String fullName;
     private String roleID;
@@ -28,7 +29,7 @@ public class UserDTO {
         this.roleID = roleID;
         this.password = password;
     }
-   
+
     public String getUserID() {
         return userID;
     }
@@ -60,5 +61,5 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-                
+
 }

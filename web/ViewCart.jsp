@@ -17,7 +17,7 @@
         <h1>Enjoy your Happy time!</h1>
         <%
             CartDTO cart = (CartDTO) session.getAttribute("CART");
-            if(cart != null) {
+            if (cart != null) {
         %>
         <table border="1">
             <thead>
@@ -41,17 +41,17 @@
                 %>
             <form action="MainController" method="POST"> 
                 <tr>
-                    <td><%= count++ %></td>
+                    <td><%= count++%></td>
                     <td>
-                        <input type="text" name="id" value="<%= tea.getId() %>" readonly=""/>
+                        <input type="text" name="id" value="<%= tea.getId()%>" readonly=""/>
                     </td>
-                    
-                    <td><%= tea.getName() %></td>
-                    <td><%= tea.getPrice() %></td>
+
+                    <td><%= tea.getName()%></td>
+                    <td><%= tea.getPrice()%></td>
                     <td>
-                        <input type="number" name="quantity" value="<%= tea.getQuantity() %>" required="" min="1"/>
+                        <input type="number" name="quantity" value="<%= tea.getQuantity()%>" required="" min="1"/>
                     </td>
-                    <td><%= tea.getPrice() * tea.getQuantity() %></td>
+                    <td><%= tea.getPrice() * tea.getQuantity()%></td>
                     <td>
                         <input type="submit" name="action" value="Change"/>
                     </td>
@@ -60,16 +60,16 @@
                     </td>
                 </tr>
             </form>   
-                <%
-                    }
-
-                %>
-            </tbody>
-        </table>
-                <h1>Total: <%= total %></h1>    
             <%
                 }
+
             %>
-            <a href="shopping.jsp">Add more</a>
-    </body>
+        </tbody>
+    </table>
+    <h1>Total: <%= total%></h1>    
+    <%
+        }
+    %>
+    <a href="shopping.jsp">Add more</a>
+</body>
 </html>

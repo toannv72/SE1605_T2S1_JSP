@@ -47,7 +47,7 @@ public class DeleteController extends HttpServlet {
             }
         } catch (Exception e) {
             log("Error at DeleteController:" + e.toString());
-        }finally{
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

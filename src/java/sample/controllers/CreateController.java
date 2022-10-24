@@ -22,9 +22,10 @@ import sample.user.UserError;
  */
 @WebServlet(urlPatterns = {"/CreateController"})
 public class CreateController extends HttpServlet {
+
     private static final String ERROR = "create.jsp";
-    private static final String SUCCESS ="login.jsp";
-  
+    private static final String SUCCESS = "login.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,38 +39,38 @@ public class CreateController extends HttpServlet {
             String roleID = request.getParameter("roleID");
             String password = request.getParameter("password");
             String confirm = request.getParameter("confirm");
-            if(userID.length() < 2 || userID.length() > 10) {
+            if (userID.length() < 2 || userID.length() > 10) {
                 userError.setUserID("UserID must be in [2,10]");
                 checkValidation = false;
             }
             boolean checkDuplicate = dao.checkDuplicate(userID);
-            
-            if(checkDuplicate) {
+
+            if (checkDuplicate) {
                 userError.setUserID("Duplicate userID");
                 checkValidation = false;
             }
-            
-            if(fullName.length() < 5 || userID.length() > 20) {
+
+            if (fullName.length() < 5 || userID.length() > 20) {
                 userError.setFullName("FullName must be in [5,20]");
                 checkValidation = false;
             }
-            
-            if(!password.equals(confirm)) {
+
+            if (!password.equals(confirm)) {
                 userError.setConfirm("Password need to same");
                 checkValidation = false;
             }
-            
-            if(checkValidation) {
+
+            if (checkValidation) {
                 UserDTO user = new UserDTO(userID, fullName, roleID, password);
                 boolean checkInsert = dao.insert(user);
-                if(checkInsert) {
+                if (checkInsert) {
                     url = SUCCESS;
                 }
-            }else{
+            } else {
                 request.setAttribute("USER_ERROR", userError);
             }
 
-        }catch(Exception e) {
+        } catch (Exception e) {
             log("Error at CreateController: " + e.toString());
         } finally {
             request.setAttribute("ERROR", "thanh cong");

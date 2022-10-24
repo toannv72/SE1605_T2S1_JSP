@@ -20,16 +20,17 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = {"/LogoutController"})
 public class LogoutController extends HttpServlet {
+
     private static final String ERROR = "login.html";
-    private static final String SUCCESS="login.html";
-    
+    private static final String SUCCESS = "login.html";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
             HttpSession session = request.getSession(false);
-            if (session!=null) {
+            if (session != null) {
                 session.invalidate();
                 url = SUCCESS;
             }
@@ -38,7 +39,7 @@ public class LogoutController extends HttpServlet {
         } finally {
             response.sendRedirect(url);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

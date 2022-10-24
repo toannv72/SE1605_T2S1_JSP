@@ -10,6 +10,7 @@ package sample.user;
  * @author MagnusJS
  */
 public class UserError {
+
     private String userID;
     private String fullName;
     private String roleID;
@@ -71,7 +72,5 @@ public class UserError {
     public void setConfirm(String confirm) {
         this.confirm = confirm;
     }
-    
-    
-    
+
 }

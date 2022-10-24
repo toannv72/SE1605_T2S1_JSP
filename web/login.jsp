@@ -10,103 +10,44 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
-        <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
-        <link rel="stylesheet" href="THUVIEN/bootstrap-5.2.0-dist/css/bootstrap.css"/>
-        <script src="THUVIEN/bootstrap-5.2.0-dist/js/bootstrap.js"></script>
-        <link rel="stylesheet" href="tool/login.css" />
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
-        <div><div class="p1">
-                <div class="p1">
-                    <a href="#"><img style="  border-radius: 100% ;" src="anh/102c7ed9ad2c29b489ec34ebbf336a77.jpg" alt=""/> </a>
-                    <h1>Cafe Chat</h1>
+
+        <div class="home" style="background-color: darkgoldenrod; height: 70px; text-align: center; "><img src="https://banghegiare.com.vn/data/news/3722/logo-thuong-hieu-cafe.png" style=" height: 62px;  border-radius: 100%; margin: 4px;" alt=""></div>
+        <div class="login" style=" margin: 0 auto;   padding: 31px; width: 472px;  border: 3px solid #4f4949; border-radius: 20px; margin-top: 30px" >
+            <h2>Welcome to the login Page</h2>
+            <form action="MainController" method="POST" style="margin:10px ;">
+
+                <div class="formg-roup">
+                    User ID <input class="form-control"type="text" name="userID" /></br>
+                    Password <input class="form-control"type="password" name="password"/></br>
+
+                    <input  style="width: 100%;margin-bottom: 10px;"class="btn btn-primary" type="submit" name="action" value="Login"/>
+                    <h4> ${requestScope.ERROR}</h4>
+                     <br>
+                     <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
+                        OR
+                    </span> <hr class="flex-fill m-0"></div>
+                    <a href="#" class="btn btn-secondary btn-block">
+                        <img src="https://accounts.google.com/favicon.ico" alt="" width="24" height="24">
+                        Login email
+                    </a> 
+                    <!--                    <input style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="btn btn-primary" type="reset" value="Reset" /> <br>-->
+
+                   
+
+                    <div style="margin-top:  10px">
+                        <a class="btn btn-outline-dark" href="create.jsp">Create</a>
+                        <a class="btn btn-outline-dark" href="shopping.jsp">Shopping</a>
+                    </div>
+
                 </div>
-            </div>
-            <div class="p2">
-                <div
-                    id="carouselExampleIndicators"
-                    class="carousel slide"
-                    data-bs-ride="carousel"
-                    >
-                    <div class="carousel-indicators">
-                        <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="0"
-                            class="active"
-                            aria-current="true"
-                            aria-label="Slide 1"
-                            ></button>
-                        <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="1"
-                            aria-label="Slide 2"
-                            ></button>
-                        <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="2"
-                            aria-label="Slide 3"
-                            ></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img
-                                src="img/photo-1615172282427-9a57ef2d142e.png"
-                                class="d-block w-100"
-                                alt="0"
-                                />
-                        </div>
-                        <div class="carousel-item">
-                            <img
-                                src="img/images1602951_147537_E57AF91E_7FA2_4BA9_BC37_FB155407F445.png"
-                                class="d-block w-100"
-                                alt="1"
-                                />
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/motorbike.webp" class="d-block w-100" alt="2" />
-                        </div>
-                    </div>
-                    <button
-                        class="carousel-control-prev"
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev"
-                        >
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button
-                        class="carousel-control-next"
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next"
-                        >
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                    <h2>Motorbike rental website</h2>
-                </div>      
-                <div class="p22">
-                    <div class="noi-dung">
-                        <div class="form">
-                            <h2>Welcome to the login Page</h2>
-                            <form action="MainController" method="POST">
-                                User ID <input type="text" name="userID" /></br>
-                                Password <input type="password" name="password"/></br>
-                                ${requestScope.ERROR} <br>
-                                <br> <div class="input-form-1">  <input type="submit" name="action" value="Login"/><br></div>
-                                
-                                <a class="btn btn-outline-dark" href="create.jsp">Create</a>
-                                <a class="btn btn-outline-dark" href="shopping.jsp">Shopping</a>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </form>
 
     </body>
 </html>

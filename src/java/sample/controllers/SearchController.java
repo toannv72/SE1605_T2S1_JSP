@@ -22,8 +22,10 @@ import sample.user.UserDTO;
  */
 @WebServlet(name = "SearchController", urlPatterns = {"/SearchController"})
 public class SearchController extends HttpServlet {
-public static final String ERROR="admin.jsp";
-public static final String SUCCESS="admin.jsp";
+
+    public static final String ERROR = "admin.jsp";
+    public static final String SUCCESS = "admin.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,7 +34,7 @@ public static final String SUCCESS="admin.jsp";
             String search = request.getParameter("search");
             UserDAO dao = new UserDAO();
             List<UserDTO> listUser = dao.getListUser(search);
-            if(listUser.size() > 0) {
+            if (listUser.size() > 0) {
                 request.setAttribute("LIST_USER", listUser);
                 url = SUCCESS;
             }

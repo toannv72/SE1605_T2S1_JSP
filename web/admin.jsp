@@ -14,16 +14,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Page</title>
         <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </head>
     <body>
-   <%
-            String valueSearch =request.getParameter("search");
+        <%
+            String valueSearch = request.getParameter("search");
             if (valueSearch == null) {
                 valueSearch = "";
-            } 
+            }
         %>
         <%
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
@@ -32,20 +32,21 @@
                 return;
             }
         %>
-        <h1>Welcome: <%= loginUser.getFullName()%> </h1>
-     
-        <form action="MainController">
-            <input type="submit" name="action" value="Logout">
-            Search <input type="text" name="search" value=<%= valueSearch %>>
-            <input type="submit" name="action" value="Search"/>
-           
+        <h1 style="text-align: center;">Welcome: <%= loginUser.getFullName()%> </h1>
+
+        <form action="MainController" style="  display: flex;height:  40px;    justify-content: space-around;">
+
+            <div style="justify-content: flex-end;"> Search <input style="border-radius: 10px;" type="text" name="search" value=<%= valueSearch%>>
+                <input style="border-radius: 10px; "type="submit" name="action" value="Search"/>
+            </div>
+            <input style="border-radius: 5px; "type="submit" name="action"class="btn btn-outline-danger" value="Logout">
         </form>
         <%
             List<UserDTO> listUser = (List<UserDTO>) request.getAttribute("LIST_USER");
             if (listUser != null) {
                 if (listUser.size() > 0) {
         %>
-        <table border="1" class="table">
+        <table border="1" class="table" style="width: 90%;margin: 0 auto;margin-top: 30px;">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">No</th>
@@ -73,8 +74,8 @@
                     <td><input type="text" name="fullName" value="<%= user.getFullName()%>"required=""></td>
                     <td><input type="text" name="roleID" value="<%= user.getRoleID()%>"required=""></td>
                     <td><%= user.getPassword()%></td>
-                    <td>
-                        <a href="MainController?userID=<%=user.getUserID()%>&action=Delete&search=<%= search%>">Delete </a>
+                    <td >
+                        <a style="color: red"href="MainController?userID=<%=user.getUserID()%>&action=Delete&search=<%= search%>">Delete </a>
                     </td>
                     <td>
                         <input type="submit" name="action" value="Update"/>
@@ -94,7 +95,7 @@
 
         }
     %>
-            <%=error%>
+    <%=error%>
 
     <%
             }

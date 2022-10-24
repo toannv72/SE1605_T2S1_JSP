@@ -10,8 +10,9 @@ package sample.tea;
  * @author hohon
  */
 public class TeaDTO {
+
     private String id;
-        private String name;
+    private String name;
     private double price;
     private int quantity;
 
@@ -57,5 +58,4 @@ public class TeaDTO {
         this.quantity = quantity;
     }
 
-    
 }

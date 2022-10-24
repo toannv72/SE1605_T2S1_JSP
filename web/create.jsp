@@ -7,55 +7,65 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create page</title>
-        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">-->
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     </head>
     <body>
-        <% 
-            UserError userError = (UserError) request.getAttribute("USER_ERROR");
-            if (userError==null) userError = new UserError();
-        %>
-        <h1 class="display-5">Input your information: </h1>
-        <form action="MainController" >
-            <table>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-                
-                <tr>
-                    <td>User ID:</td> 
-                    <td class="ms-1"><input type="text" name="userID" required=""/></td>
-                </tr>
-                <%= userError.getUserID()%>
-                
-                <tr>
-                    <td>Full Name:</td> 
-                    <td class="ms-1"><input type="text" name="fullName" required=""/></td>
-                </tr>
-                <%= userError.getFullName()%>
-                
-                <tr>
-                    <td>Role ID:</td> 
-                    <td class="ms-1"><input type="text" name="roleID" value="US" readonly=""/></td>
-                </tr>
-                
-                <tr>
-                    <td>Password:</td> 
-                    <td class="ms-1"><input type="password" name="password" required=""/> </td>
-                </tr>
-                
-                <tr>
-                    <td>Confirm:</td> 
-                    <td class="ms-1"><input type="password" name="confirm" required=""/></td>
-                <tr>
-                <%= userError.getConfirm()%>
-                
-                <tr>
-                    <td><input  type="submit" name="action" value="Create"/></td>
-                    <td><input  type="reset" value="Reset"/></td>
-                <tr>
-            </table>
-        </form>
-          </body>
+        <div class="home" style="background-color: darkgoldenrod; height: 70px; text-align: center; "><img src="https://banghegiare.com.vn/data/news/3722/logo-thuong-hieu-cafe.png" style=" height: 62px;  border-radius: 100%; margin: 4px;" alt=""></div>
+
+
+        <div class="login" style=" margin: 0 auto;padding: 31px; width: 472px;  border: 3px solid #4f4949; border-radius: 20px; margin-top: 30px" >
+
+            <%
+                UserError userError = (UserError) request.getAttribute("USER_ERROR");
+                if (userError == null) {
+                    userError = new UserError();
+                }
+            %>
+            <h2 class="display-5">Input your information: </h2>
+            <form action="MainController" >
+                <table >
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+                    <tr>
+                        <td>User ID:</td> 
+                        <td class="ms-1"><input style="border-radius: 10px" type="text" name="userID" required=""/></td>
+                    </tr>
+                    <%= userError.getUserID()%>
+
+                    <tr>
+                        <td>Full Name:</td> 
+                        <td class="ms-1"><input style="border-radius: 10px"type="text" name="fullName" required=""/></td>
+                    </tr>
+                    <%= userError.getFullName()%>
+
+                    <input type="hidden" value="US" name="roleID" />
+                    
+
+                    <tr>
+                        <td>Password:</td> 
+                        <td class="ms-1"><input style="border-radius: 10px"type="password" name="password" required=""/> </td>
+                    </tr>
+
+                    <tr>
+                        <td>Confirm:</td> 
+                        <td class="ms-1"><input style="border-radius: 10px"type="password" name="confirm" required=""/></td>
+                    </tr>
+                    <%= userError.getConfirm()%>
+
+                    <tr>
+                        <td><input style="margin-top: 10px"class="btn btn-outline-primary" type="submit" name="action" value="Create"/></td>
+                        <td><input style="margin-top: 10px"class="btn btn-outline-warning" type="reset" value="Reset"/></td>
+                    </tr>
+
+                </table>
+                <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
+                        Already have an account?
+                    </span> <hr class="flex-fill m-0"></div>
+                <a style="width: 100%;margin-bottom: 10px;"href="login.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">login</a>
+            </form>
+        </div>
+    </body>
 </html>

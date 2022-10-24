@@ -21,41 +21,42 @@ import sample.user.UserDTO;
  */
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
-private static final String ERROR= "login.jsp";
 
-private static final String AD= "AD";
-private static final String ADMIN_PAGE= "admin.jsp";
-private static final String US= "US";
-private static final String USER_PAGE= "user.jsp";
+    private static final String ERROR = "login.jsp";
+
+    private static final String AD = "AD";
+    private static final String ADMIN_PAGE = "admin.jsp";
+    private static final String US = "US";
+    private static final String USER_PAGE = "user.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url =  ERROR;
+        String url = ERROR;
         try {
-            String userID= request.getParameter("userID");
-            String password= request.getParameter("password");
-            UserDAO dao= new UserDAO();
-            UserDTO loginUser= dao.checkLogin(userID, password);
+            String userID = request.getParameter("userID");
+            String password = request.getParameter("password");
+            UserDAO dao = new UserDAO();
+            UserDTO loginUser = dao.checkLogin(userID, password);
 //            xac thuc o day
-        if(loginUser== null){
-            request.setAttribute("ERROR", "Incorrect userID or password");
-        }else{
+            if (loginUser == null) {
+                request.setAttribute("ERROR", "Incorrect userID or password");
+            } else {
 //            phan quyen o day
-            HttpSession session= request.getSession();
-            session.setAttribute("LOGIN_USER", loginUser);
-            String roleID= loginUser.getRoleID();
-            if(AD.equals(roleID)){
-                url= ADMIN_PAGE;
-            }else if(US.equals(roleID)){
-                url= USER_PAGE;
-            }else{
-                request.setAttribute("ERROR", "Your role is not support not yet:");
+                HttpSession session = request.getSession();
+                session.setAttribute("LOGIN_USER", loginUser);
+                String roleID = loginUser.getRoleID();
+                if (AD.equals(roleID)) {
+                    url = ADMIN_PAGE;
+                } else if (US.equals(roleID)) {
+                    url = USER_PAGE;
+                } else {
+                    request.setAttribute("ERROR", "Your role is not support not yet:");
+                }
             }
-        }
         } catch (Exception e) {
             log("Error at LoginController" + e.toString());
-        }finally{
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

@@ -15,39 +15,37 @@ import javax.servlet.http.HttpSession;
 import sample.tea.CartDTO;
 import sample.tea.TeaDTO;
 
-
 /**
  *
  * @author hohon
  */
 public class RemoveController extends HttpServlet {
 
-   private static final String ERROR = "ViewCart.jsp";
-   private static final String SUCCESS = "ViewCart.jsp";
-    
+    private static final String ERROR = "ViewCart.jsp";
+    private static final String SUCCESS = "ViewCart.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            String url = ERROR;
-            try {
-                String id = request.getParameter("id");
-                int newQuantity = Integer.parseInt(request.getParameter("quantity"));
-                HttpSession session = request.getSession();
-                CartDTO cart = (CartDTO) session.getAttribute("CART");
-                
-                cart.remove(id);
-                
-                session.setAttribute("CART", cart);
-                if(cart.getCart().size() == 0) {
-                    session.setAttribute("CART", null);
-                }
-        
-                url = SUCCESS;
+        String url = ERROR;
+        try {
+            String id = request.getParameter("id");
+            int newQuantity = Integer.parseInt(request.getParameter("quantity"));
+            HttpSession session = request.getSession();
+            CartDTO cart = (CartDTO) session.getAttribute("CART");
+
+            cart.remove(id);
+
+            session.setAttribute("CART", cart);
+            if (cart.getCart().size() == 0) {
+                session.setAttribute("CART", null);
+            }
+
+            url = SUCCESS;
         } catch (Exception e) {
             log("Error at Change Controller: " + e.toString());
-        }
-            finally {
-                request.getRequestDispatcher(url).forward(request, response);
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

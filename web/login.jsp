@@ -10,11 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"><!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+        <title>Bootstrap Example</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
 
@@ -28,19 +30,16 @@
                     Password <input class="form-control"type="password" name="password"/></br>
 
                     <input  style="width: 100%;margin-bottom: 10px;"class="btn btn-primary" type="submit" name="action" value="Login"/>
-                    <h4> ${requestScope.ERROR}</h4>
-                     <br>
-                     <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
-                        OR
-                    </span> <hr class="flex-fill m-0"></div>
+<!--                    <h4> ${requestScope.ERROR}</h4>
+                    <br>-->
+                    <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
+                            OR
+                        </span> <hr class="flex-fill m-0"></div>
                     <a href="#" class="btn btn-secondary btn-block">
                         <img src="https://accounts.google.com/favicon.ico" alt="" width="24" height="24">
                         Login email
                     </a> 
                     <!--                    <input style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="btn btn-primary" type="reset" value="Reset" /> <br>-->
-
-                   
-
                     <div style="margin-top:  10px">
                         <a class="btn btn-outline-dark" href="create.jsp">Create</a>
                         <a class="btn btn-outline-dark" href="shopping.jsp">Shopping</a>
@@ -48,6 +47,33 @@
 
                 </div>
             </form>
+        </div>
+
+
+
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+
+            <div class="toast-container top-0 end-0 p-3">
+
+                <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+
+                        <strong class="me-auto">
+                            Notification</strong>
+                        <small class="text-muted">just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${requestScope.ERROR}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
 
     </body>
 </html>

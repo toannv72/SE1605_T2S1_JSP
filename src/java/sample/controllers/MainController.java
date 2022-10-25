@@ -33,7 +33,7 @@ public class MainController extends HttpServlet {
     private static final String SHOPPING = "Add";
     private static final String SHOPPING_CONTROLLER = "AddController";
     private static final String VIEW = "View";
-    private static final String VIEW_PAGE = "ViewCart.jsp";
+    private static final String VIEW_PAGE = "viewCart.jsp";
     private static final String CHANGE = "Change";
     private static final String CHANGE_CONTROLLER = "ChangeController";
     private static final String REMOVE = "Remove";

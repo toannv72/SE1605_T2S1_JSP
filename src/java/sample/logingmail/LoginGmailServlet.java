@@ -48,9 +48,10 @@ public class LoginGmailServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 UserDAO dao = new UserDAO();
                 if (!dao.checkDuplicate(googlePojo.getEmail())) {
-                    dao.insert(new UserDTO(googlePojo.getEmail(), googlePojo.getName(), "US", "1"));
+                    dao.insert(new UserDTO(googlePojo.getId(), googlePojo.getName(), "US", "1"));
                 }
-                UserDTO loginUser = dao.checkLogin(googlePojo.getEmail(), "1");
+                UserDTO loginUser = dao.checkLogin(googlePojo.getId(), "1");
+                loginUser.setAvatar(googlePojo.getPicture());
                 session.setAttribute("LOGIN_USER", loginUser);
                 
                 String roleID = loginUser.getRoleID();

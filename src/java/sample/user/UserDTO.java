@@ -15,12 +15,14 @@ public class UserDTO {
     private String fullName;
     private String roleID;
     private String password;
+    private String avatar;
 
     public UserDTO() {
         this.userID = "";
         this.fullName = "";
         this.roleID = "";
         this.password = "";
+        this.avatar = "";
     }
 
     public UserDTO(String userID, String fullName, String roleID, String password) {
@@ -60,6 +62,14 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
 }

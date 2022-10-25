@@ -19,7 +19,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
-        <link rel="stylesheet" href="anh/test.css">
+
     </head>
     <body>
         <div style="width: 100%;justify-content: space-around;    display: flex;">
@@ -57,6 +57,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>

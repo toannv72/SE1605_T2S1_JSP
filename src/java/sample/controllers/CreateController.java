@@ -73,7 +73,7 @@ public class CreateController extends HttpServlet {
         } catch (Exception e) {
             log("Error at CreateController: " + e.toString());
         } finally {
-            request.setAttribute("ERROR", "thanh cong");
+            request.setAttribute("ERROR", "Successful");
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

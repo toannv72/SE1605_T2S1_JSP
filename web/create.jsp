@@ -8,6 +8,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create page</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
     </head>
     <body>
         <div class="home" style="background-color: darkgoldenrod; height: 70px; text-align: center; "><img src="https://banghegiare.com.vn/data/news/3722/logo-thuong-hieu-cafe.png" style=" height: 62px;  border-radius: 100%; margin: 4px;" alt=""></div>
@@ -24,7 +28,7 @@
             <h2 class="display-5">Input your information: </h2>
             <form action="MainController" >
                 <table >
-                 
+
                     <tr>
                         <td>User ID:</td> 
                         <td class="ms-1"><input style="border-radius: 10px" type="text" name="userID" required=""/></td>
@@ -38,7 +42,7 @@
                     <%= userError.getFullName()%>
 
                     <input type="hidden" value="US" name="roleID" />
-                    
+
 
                     <tr>
                         <td>Password:</td> 
@@ -65,5 +69,7 @@
         </div>
                     
                     
+      
+
     </body>
 </html>

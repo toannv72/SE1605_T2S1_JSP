@@ -18,8 +18,10 @@
     </head>
     <body>
         <%
+            
+            List<UserDTO> listUser = (List<UserDTO>) request.getAttribute("LIST_USER");
             String valueSearch = request.getParameter("search");
-            if (valueSearch == null) {
+            if (valueSearch == null ||  listUser == null) {
                 valueSearch = "";
             }
         %>
@@ -40,7 +42,7 @@
             <input style="border-radius: 5px; "type="submit" name="action"class="btn btn-outline-danger" value="Logout">
         </form>
         <%
-            List<UserDTO> listUser = (List<UserDTO>) request.getAttribute("LIST_USER");
+           
             if (listUser != null) {
                 if (listUser.size() > 0) {
         %>

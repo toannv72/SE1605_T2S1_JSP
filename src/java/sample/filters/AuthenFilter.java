@@ -55,6 +55,7 @@ public class AuthenFilter implements Filter {
         NON_AUTHEN.add(".jpg");
         NON_AUTHEN.add(".png");
         NON_AUTHEN.add(".gif");
+        NON_AUTHEN.add("LoginGmailServlet");
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

@@ -25,8 +25,8 @@ public class UserDAO {
     // private static final String UPDATE = "UPDATE  tblUsers set fullname=? ,roleID=? WHERE userID=?";
     private static final String UPDATE = " UPDATE tblUsers SET fullName=? ,roleID=? WHERE userID =? ";
     private static final String CHECK_DUPLICATE = "SELECT userID FROM tblUsers WHERE userID = ?";
-    private static final String INSERT = "INSERT INTO tblUsers(userID, fullName, roleID, password)"
-            + " VALUES(?, ?, ?, ?)";
+    private static final String INSERT = "INSERT INTO tblUsers(userID, fullName, roleID, password,status)"
+            + " VALUES(?, ?, ?, ?,?)";
 
     public UserDTO checkLogin(String userID, String password) throws SQLException {
         UserDTO user = null;
@@ -193,6 +193,7 @@ public class UserDAO {
                 ptm.setString(2, user.getFullName());
                 ptm.setString(3, user.getRoleID());
                 ptm.setString(4, user.getPassword());
+                ptm.setString(5, "true");
                 checkInsert = ptm.executeUpdate() > 0 ? true : false;
 
             }

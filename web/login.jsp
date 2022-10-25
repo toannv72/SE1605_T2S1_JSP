@@ -17,6 +17,7 @@
         <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
     </head>
     <body>
  <div aria-live="polite" aria-atomic="true" class="position-relative">
@@ -43,37 +44,44 @@
         <div class="home" style="background-color: darkgoldenrod; height: 70px; text-align: center; "><img src="https://banghegiare.com.vn/data/news/3722/logo-thuong-hieu-cafe.png" style=" height: 62px;  border-radius: 100%; margin: 4px;" alt=""></div>
         <div class="login" style=" margin: 0 auto;   padding: 31px; width: 472px;  border: 3px solid #4f4949; border-radius: 20px; margin-top: 30px" >
             <h2>Welcome to the login Page</h2>
+
             
             
             <form action="MainController" method="POST" style="margin:10px ;">
 
                 <div class="formg-roup">
+
+            <div class="formg-roup">
+                <form action="MainController" method="POST" style="margin:10px ;">
+
                     User ID <input class="form-control"type="text" name="userID" /></br>
                     Password <input class="form-control"type="password" name="password"/></br>
-
+                    <div class="g-recaptcha" data-sitekey="6Lea6JghAAAAAJIVvUKFe9hgkNeKM7rFOglMouub"></div>
+                    <br>
                     <input  style="width: 100%;margin-bottom: 10px;"class="btn btn-primary" type="submit" name="action" value="Login"/>
-<!--                    <h4> ${requestScope.ERROR}</h4>
-                    <br>-->
-                    <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
-                            OR
-                        </span> <hr class="flex-fill m-0"></div>
-                    <a href="#" class="btn btn-secondary btn-block">
-                        <img src="https://accounts.google.com/favicon.ico" alt="" width="24" height="24">
-                        Login email
-                    </a> 
-                    <!--                    <input style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="btn btn-primary" type="reset" value="Reset" /> <br>-->
-                    <div style="margin-top:  10px">
-                        <a class="btn btn-outline-dark" href="create.jsp">Create</a>
-                        <a class="btn btn-outline-dark" href="shopping.jsp">Shopping</a>
-                    </div>
+                   
+                    <br>
+                </form>
 
+                <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
+                        OR
+                    </span> <hr class="flex-fill m-0"></div>
+                <a  href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/SE1605_T2S1_JSP/LoginGmailServlet&response_type=code&client_id=44053918113-1jh0a9cv9jnlt9psod25op4ek2crcm7r.apps.googleusercontent.com&approval_prompt=force" class="btn btn-secondary btn-block" >
+                    <img src="https://accounts.google.com/favicon.ico" alt="" width="24" height="24">
+                    Login email
+                </a> 
+                <!--                    <input style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="btn btn-primary" type="reset" value="Reset" /> <br>-->
+                <div style="margin-top:  10px">
+                    <a class="btn btn-outline-dark" href="create.jsp">Create</a>
+                    <a class="btn btn-outline-dark" href="shopping.jsp">Shopping</a>
                 </div>
-            </form>
+
+
+
+            </div>     
+
         </div>
 
-
-
-       
 
 
 

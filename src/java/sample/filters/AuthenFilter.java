@@ -34,7 +34,7 @@ public class AuthenFilter implements Filter {
     private static List<String> USER;
     private static List<String> ADMIN;
     private static List<String> NON_AUTHEN;
-    private static final String LOGIN_PAGE="login.html";
+    private static final String LOGIN_PAGE="login.jsp";
     private static final boolean debug = true;
     private FilterConfig filterConfig = null;
     
@@ -46,7 +46,7 @@ public class AuthenFilter implements Filter {
         ADMIN.add("admin.jsp");
         
         NON_AUTHEN = new ArrayList<>();
-        NON_AUTHEN.add("login.html");
+        NON_AUTHEN.add("login.jsp");
         NON_AUTHEN.add("MainController");
         NON_AUTHEN.add("login.jsp");
         NON_AUTHEN.add("LoginController");

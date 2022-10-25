@@ -24,11 +24,7 @@
             <h2 class="display-5">Input your information: </h2>
             <form action="MainController" >
                 <table >
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-
+                 
                     <tr>
                         <td>User ID:</td> 
                         <td class="ms-1"><input style="border-radius: 10px" type="text" name="userID" required=""/></td>
@@ -57,7 +53,7 @@
 
                     <tr>
                         <td><input style="margin-top: 10px"class="btn btn-outline-primary" type="submit" name="action" value="Create"/></td>
-                        <td><input style="margin-top: 10px"class="btn btn-outline-warning" type="reset" value="Reset"/></td>
+                        <!--<td><input style="margin-top: 10px"class="btn btn-outline-warning" type="reset" value="Reset"/></td>-->
                     </tr>
 
                 </table>

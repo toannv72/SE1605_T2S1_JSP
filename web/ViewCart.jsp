@@ -16,12 +16,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
      </head>
     <body>
-        <h1>Enjoy your Happy time!</h1>
+        <h1 style="text-align: center">Enjoy your Happy time!</h1>
         <%
             CartDTO cart = (CartDTO) session.getAttribute("CART");
             if (cart != null) {
         %>
-        <table border="1" lass="table">
+        <table border="1" class="table" style="width: 60%;margin: 0 auto;margin-top: 30px;">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">No</th>
@@ -58,20 +58,32 @@
                         <input type="submit" name="action" value="Change"/>
                     </td>
                     <td>
-                        <input type="submit" name="action" value="Remove"/>
+                        <input style="background-color: red" type="submit" name="action" value="Remove"/>
                     </td>
                 </tr>
-            </form>   
+            </form>  
+                    
             <%
                 }
 
             %>
         </tbody>
+        <tr>
+                    <th scope="col"><%= ++count%></th>
+                    <th scope="col"colspan="5" style="text-align: center;font-size: 20px">Total</th>
+                    <th scope="col"><%= total%></th>
+                    <th scope="col"><input type="submit" name="" value="Pay" style="text-align: center;width: 72.66px;"/></th>
+                </tr>
     </table>
-    <h1>Total: <%= total%></h1>    
+
     <%
         }
     %>
-    <a href="shopping.jsp">Add more</a>
+    
+   
+   
+    
+    <button  style="margin-left: 70%;margin-top: 15px"  type="button" class="btn btn-outline-success"> <a href="shopping.jsp">Add more</a></button>
+    
 </body>
 </html>

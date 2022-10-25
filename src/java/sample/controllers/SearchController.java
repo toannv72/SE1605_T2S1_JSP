@@ -38,6 +38,7 @@ public class SearchController extends HttpServlet {
                 request.setAttribute("LIST_USER", listUser);
                 url = SUCCESS;
             }
+         
         } catch (Exception e) {
             log("Error at SearchController: " + e.toString());
         } finally {

@@ -18,83 +18,52 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import sample.user.UserDAO;
 import sample.user.UserDTO;
 
 /**
  *
- * @author ADMIN_FUNCTIONS
+ * @author MagnusJS
  */
 @WebFilter(filterName = "AuthenFilter", urlPatterns = {"/*"})
 public class AuthenFilter implements Filter {
-
-    private static final String ROLE_AD = "AD";
-    private static final String ROLE_US = "US";
-    private static List<String> USER_FUNCTIONS;
-    private static List<String> ADMIN_FUNCTIONS;
-    private static List<String> NON_AUTHEN_FUNCTIONS;
-
-    private static final String LOGIN_PAGE = "login.html";
-
+    private static final String AD="AD";
+    private static final String US="US";
+    private static List<String> USER;
+    private static List<String> ADMIN;
+    private static List<String> NON_AUTHEN;
+    private static final String LOGIN_PAGE="login.html";
     private static final boolean debug = true;
-
-    // The filter configuration object we are associated with.  If
-    // this value is null, this filter instance is not currently
-    // configured. 
     private FilterConfig filterConfig = null;
-
+    
     public AuthenFilter() {
-        USER_FUNCTIONS = new ArrayList<>();
-        USER_FUNCTIONS.add("user.jsp");
-
-        ADMIN_FUNCTIONS = new ArrayList<>();
-        ADMIN_FUNCTIONS.add("admin.jsp");
-
-        NON_AUTHEN_FUNCTIONS = new ArrayList<>();
-        NON_AUTHEN_FUNCTIONS.add("login.html");
-        NON_AUTHEN_FUNCTIONS.add("MainController");
-        NON_AUTHEN_FUNCTIONS.add("login.jsp");
-        NON_AUTHEN_FUNCTIONS.add("LoginController");
-        NON_AUTHEN_FUNCTIONS.add(".jsp");
-        NON_AUTHEN_FUNCTIONS.add(".png");
-        NON_AUTHEN_FUNCTIONS.add(".gif");
-        NON_AUTHEN_FUNCTIONS.add("create.jsp");
-        NON_AUTHEN_FUNCTIONS.add("shopping.jsp");
-
-    }
-
+        USER = new ArrayList<>();
+        USER.add("user.jsp");
+        
+        ADMIN = new ArrayList<>();
+        ADMIN.add("admin.jsp");
+        
+        NON_AUTHEN = new ArrayList<>();
+        NON_AUTHEN.add("login.html");
+        NON_AUTHEN.add("MainController");
+        NON_AUTHEN.add("login.jsp");
+        NON_AUTHEN.add("LoginController");
+        NON_AUTHEN.add("create.jsp");
+        NON_AUTHEN.add("shopping.jsp");
+        NON_AUTHEN.add(".jpg");
+        NON_AUTHEN.add(".png");
+        NON_AUTHEN.add(".gif");
+    }    
+    
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
             log("AuthenFilter:DoBeforeProcessing");
         }
-
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-        /*
-	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
-	    int n = values.length;
-	    StringBuffer buf = new StringBuffer();
-	    buf.append(name);
-	    buf.append("=");
-	    for(int i=0; i < n; i++) {
-	        buf.append(values[i]);
-	        if (i < n-1)
-	            buf.append(",");
-	    }
-	    log(buf.toString());
-	}
-         */
-    }
-
+    }    
+    
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
@@ -132,49 +101,40 @@ public class AuthenFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-
+        
         try {
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
             String uri = req.getRequestURI();
-
-            for (String value : NON_AUTHEN_FUNCTIONS) {
+            for (String value : NON_AUTHEN) {
                 if (uri.contains(value)) {
                     chain.doFilter(request, response);
                     return;
                 }
             }
-
-//            if (uri.contains(".jpg") || uri.contains(".png") || uri.contains(".gif")) {
-//                chain.doFilter(request, response);
-//            } else {
-//                if (uri.contains("login.html")
-//                        || uri.contains("login.jsp")
-//                        || uri.contains("MainController")
-//                        || uri.contains("create.jsp")
-//                        || uri.contains("LoginController")) {
-//                    chain.doFilter(request, response);
-//                    return;
-//                }
-            int index = uri.lastIndexOf("/");
-            String resource = uri.substring(index + 1);
-            HttpSession session = req.getSession();
-
-            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
-            if (session == null || user == null) {
-                res.sendRedirect(LOGIN_PAGE);
-            } else {
-                String roleID = user.getRoleID();
-                if (ROLE_AD.equals(roleID) && ADMIN_FUNCTIONS.contains(resource)) {
-                    chain.doFilter(request, response);
-                } else {
+                int index = uri.lastIndexOf("/");
+                String resource = uri.substring(index+1);
+                HttpSession session = req.getSession();
+                
+                // xác thực
+                UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+                if(session == null || user == null) {
                     res.sendRedirect(LOGIN_PAGE);
+                } else {
+                    String roleID = user.getRoleID();
+                    
+                    // chỗ dưới là phân quyền
+                    //user đang nhập với quyền AD và truy cập tài nguyên
+                    if(AD.equals(roleID) && ADMIN.contains(resource)) {
+                        chain.doFilter(request, response);
+                    } else if(US.equals(roleID) && USER.contains(resource)) {
+                       chain.doFilter(request, response);
+                    } else {
+                        res.sendRedirect(LOGIN_PAGE);
+                    }
                 }
-            }
-
-//            }
-        } catch (Exception e) {
-
+            
+        } catch (Exception e) { log("Error" + e.getMessage());
         }
     }
 
@@ -197,16 +157,16 @@ public class AuthenFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {
+    public void destroy() {        
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {
+    public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {
+            if (debug) {                
                 log("AuthenFilter:Initializing filter");
             }
         }
@@ -225,20 +185,20 @@ public class AuthenFilter implements Filter {
         sb.append(")");
         return (sb.toString());
     }
-
+    
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);
-
+        String stackTrace = getStackTrace(t);        
+        
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);
+                PrintWriter pw = new PrintWriter(ps);                
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
-                pw.print(stackTrace);
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
+                pw.print(stackTrace);                
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -255,7 +215,7 @@ public class AuthenFilter implements Filter {
             }
         }
     }
-
+    
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -269,9 +229,9 @@ public class AuthenFilter implements Filter {
         }
         return stackTrace;
     }
-
+    
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);
+        filterConfig.getServletContext().log(msg);        
     }
-
+    
 }

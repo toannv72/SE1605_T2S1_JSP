@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import sample.recapcha.VerifyUtils;
 import sample.user.UserDAO;
 import sample.user.UserDTO;
 
@@ -36,11 +37,19 @@ public class LoginController extends HttpServlet {
         try {
             String userID = request.getParameter("userID");
             String password = request.getParameter("password");
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            boolean verify = VerifyUtils.verify(gRecaptchaResponse);
+
             UserDAO dao = new UserDAO();
             UserDTO loginUser = dao.checkLogin(userID, password);
 //            xac thuc o day
-            if (loginUser == null) {
-                request.setAttribute("ERROR", "Incorrect userID or password");
+            if (loginUser == null || verify == false) {
+
+                if (verify == true) {
+                    request.setAttribute("ERROR", "Incorrect userID or password");
+                } else {
+                    request.setAttribute("ERROR", "You missed the Captcha!");
+                }
             } else {
 //            phan quyen o day
                 HttpSession session = request.getSession();

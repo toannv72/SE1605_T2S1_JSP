@@ -15,11 +15,32 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
     </head>
     <body>
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+
+            <div class="toast-container top-0 end-0 p-3" style="margin-top: 90px">
+
+                <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+
+                        <strong class="me-auto">
+                            Notification</strong>
+                        <small class="text-muted">just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        <font color="black">${requestScope.ERROR}</font> 
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
 
         <div class="home" style="background-color: darkgoldenrod; height: 70px; text-align: center; "><img src="https://banghegiare.com.vn/data/news/3722/logo-thuong-hieu-cafe.png" style=" height: 62px;  border-radius: 100%; margin: 4px;" alt=""></div>
         <div class="login" style=" margin: 0 auto;   padding: 31px; width: 472px;  border: 3px solid #4f4949; border-radius: 20px; margin-top: 30px" >
@@ -32,7 +53,7 @@
                     <div class="g-recaptcha" data-sitekey="6Lea6JghAAAAAJIVvUKFe9hgkNeKM7rFOglMouub"></div>
                     <br>
                     <input  style="width: 100%;margin-bottom: 10px;"class="btn btn-primary" type="submit" name="action" value="Login"/>
-                   
+
                     <br>
                 </form>
 
@@ -57,27 +78,7 @@
 
 
 
-        <div aria-live="polite" aria-atomic="true" class="position-relative">
 
-            <div class="toast-container top-0 end-0 p-3">
-
-                <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
-
-                        <strong class="me-auto">
-                            Notification</strong>
-                        <small class="text-muted">just now</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                       <font color="red">${requestScope.ERROR}</font> 
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
 
 
 

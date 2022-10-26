@@ -63,7 +63,7 @@
                 <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
                         OR
                     </span> <hr class="flex-fill m-0"></div>
-                <a  href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/SE1605_T2S1_JSP/LoginGmailServlet&response_type=code&client_id=44053918113-1jh0a9cv9jnlt9psod25op4ek2crcm7r.apps.googleusercontent.com&approval_prompt=force" class="btn btn-secondary btn-block" >
+                <a  href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8084/SE1605_T2S1_JSP/LoginGmailServlet&response_type=code&client_id=44053918113-1jh0a9cv9jnlt9psod25op4ek2crcm7r.apps.googleusercontent.com&approval_prompt=force" class="btn btn-secondary btn-block" >
                     <img src="https://accounts.google.com/favicon.ico" alt="" width="24" height="24">
                     Login email
                 </a> 

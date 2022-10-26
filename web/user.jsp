@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="sample.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,28 +30,21 @@
 
             </form>
         </div>
-        <%
-            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
-            if (user == null || !"US".equals(user.getRoleID())) {
-                response.sendRedirect("login.jsp");
-                return;
-            }
-            if (user == null) {
-                user = new UserDTO();
-            }
-        %>
+    <c:if test="${sessionScope.LOGIN_USER ==null || sessionScope.LOGIN_USER.roleID ne 'US'}">
+            <c:redirect url="login.jsp"/>
+        </c:if>
 
         <div style="width: 100%;"> 
             <div class="card" style="width: 18rem; margin: 0 auto;" >
-                <img src="https://user-images.githubusercontent.com/64313624/194779830-0feae0ab-a5ba-4e46-952b-76c74ed429e5.jpg" class="card-img-top" alt="...">
+                <img src="${sessionScope.LOGIN_USER.avatar}" class="card-img-top" alt="...">
                 <div class="card-body">
 
 
                     <p class="card-text"> 
-                        User ID: <%= user.getUserID()%></br>
-                        Full Name: <%= user.getFullName()%></br>
-                        Role ID: <%= user.getRoleID()%></br>
-                        Password: <%= user.getPassword()%>
+                        User ID: ${sessionScope.LOGIN_USER.userID}</br>
+                        Full Name: ${sessionScope.LOGIN_USER.fullName}</br>
+                        Role ID: ${sessionScope.LOGIN_USER.roleID}</br>
+                        Password: ${sessionScope.LOGIN_USER.password}
                     </p>
 
 

@@ -69,7 +69,7 @@
                 <div class="d-flex align-items-center justify-content-between my-3"><hr class="flex-fill m-0"> <span class="mx-3">
                         Already have an account?
                     </span> <hr class="flex-fill m-0"></div>
-                <a style="width: 100%;margin-bottom: 10px;"href="login.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">login</a>
+                <a style="width: 100%;margin-bottom: 10px;"href="login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">login</a>
             </form>
         </div>
                     

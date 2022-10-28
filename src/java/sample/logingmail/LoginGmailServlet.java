@@ -16,7 +16,7 @@ import sample.user.UserDTO;
 
 /**
  *
- * @author minh tri
+ * @author ADMIN
  */
 @WebServlet(name = "LoginGmailServlet", urlPatterns = {"/LoginGmailServlet"})
 public class LoginGmailServlet extends HttpServlet {

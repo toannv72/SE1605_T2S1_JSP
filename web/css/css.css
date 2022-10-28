@@ -14,14 +14,16 @@ and open the template in the editor.
 }
 
 :root {
-    --card-height: 65vh;
+    --card-height: 55vh;
     --card-width: calc(var(--card-height) / 1.5);
 }
 .long{
     display: grid;
     gap: 25px;
-    grid-template-columns: repeat(auto-fit,minmax(300px,5fr));
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit,minmax(250px,5fr));
+    margin: 80px 0px 10px 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .toan {

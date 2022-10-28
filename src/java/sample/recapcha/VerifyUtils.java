@@ -14,7 +14,7 @@ import javax.json.JsonReader;
 
 /**
  *
- * @author minh tri
+ * @author ADMIN
  */
 public class VerifyUtils {
 

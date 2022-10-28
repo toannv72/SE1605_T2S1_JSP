@@ -13,7 +13,7 @@ import org.apache.http.client.fluent.Request;
 
 /**
  *
- * @author minh tri
+ * @author ADMIN
  */
 public class GoogleUtils {
 

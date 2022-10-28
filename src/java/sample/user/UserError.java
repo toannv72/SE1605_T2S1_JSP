@@ -7,7 +7,7 @@ package sample.user;
 
 /**
  *
- * @author MagnusJS
+ * @author ADMIN
  */
 public class UserError {
 

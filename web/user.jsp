@@ -41,10 +41,14 @@
 
         <div style="width: 100%;"> 
             <div class="card" style="width: 18rem; margin: 0 auto;" >
+                
+                <c:if test="${not empty sessionScope.LOGIN_USER.avatar}">
                 <img src="${sessionScope.LOGIN_USER.avatar}" class="card-img-top" alt="not found">
+                </c:if>
+                <c:if test="${ empty sessionScope.LOGIN_USER.avatar}">
+                <img src="https://mondaycareer.com/wp-content/uploads/2020/11/anime-l%C3%A0-g%C3%AC-v%C3%A0-kh%C3%A1i-ni%E1%BB%87m.jpg" class="card-img-top" alt="not found">
+                </c:if>
                 <div class="card-body">
-
-
                     <p class="card-text"> 
                         User ID: ${sessionScope.LOGIN_USER.userID}</br>
                         Full Name: ${sessionScope.LOGIN_USER.fullName}</br>

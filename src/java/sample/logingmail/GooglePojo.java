@@ -6,7 +6,7 @@ package sample.logingmail;
 
 /**
  *
- * @author minh tri
+ * @author ADMIN
  */
 public class GooglePojo {
 

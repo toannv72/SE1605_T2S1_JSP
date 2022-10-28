@@ -7,7 +7,7 @@ package sample.tea;
 
 /**
  *
- * @author hohon
+ * @author ADMIN
  */
 public class TeaDTO {
 
